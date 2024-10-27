@@ -3,6 +3,8 @@
 This QGIS Python script calculates the elevation differences between the gravimetric stations and the surrounding terrain, usind data from a Digital Elevation Models (DEMs).
 It follows Hammer's method (1936, https://doi.org/10.1190/1.144049) by generating concentric rings around each station and dividing each ring into radial compartments to compute elevation averages.
 
+Adjust the parameters inner_radius, outer_radius, and num_compartments to perform calculations for different rings in Hammer's net.
+
 ![imagen](https://github.com/user-attachments/assets/68343b0e-04c2-46ea-a11c-d56d39df7f05)
 
 ## Inputs
@@ -36,7 +38,7 @@ It follows Hammer's method (1936, https://doi.org/10.1190/1.144049) by generatin
 
 ## Usage Notes
 
-- Ensure all layers, including the points and DEMs, use the same coordinate reference system (CRS) and the are in UTM.
+- Ensure all layers, including the points and DEMs, use the same coordinate reference system (CRS) and they are in UTM.
 - This script should be run within the QGIS Python console or as part of a QGIS plugin.
 
 ---
