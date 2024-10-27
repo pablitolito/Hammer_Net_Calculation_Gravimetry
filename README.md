@@ -16,7 +16,7 @@ Adjust the parameters inner_radius, outer_radius, and num_compartments to perfor
 2. **DEM Layers Group ("DEMs")**  
    - DEM layers must be organized in a group called `"DEMs"` within the QGIS Layers Panel.
    - Each DEM layer should cover the region around the points to be processed.
-   - - **Note**: Ensure this layer UTM projected
+   - **Note**: Ensure this layer UTM projected
 
 3. **Parameters**  
    - `inner_radius` (float): Inner radius of the rings in meters.
