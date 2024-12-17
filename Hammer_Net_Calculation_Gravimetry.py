@@ -175,7 +175,7 @@ def process_rings(points_lyr, inner_radius, outer_radius, num_compartments):
     rings_layer = QgsVectorLayer(f'Polygon?crs={crs}', rings_layer_name, 'memory')
     provider_rings = rings_layer.dataProvider()
     provider_rings.addAttributes([QgsField("Name", QVariant.String), QgsField("Particion", QVariant.Int), 
-                                   QgsField("d_Height/2", QVariant.Double), QgsField("n_pixels", QVariant.Int)])
+                                   QgsField("d_Height", QVariant.Double), QgsField("n_pixels", QVariant.Int)])
     rings_layer.updateFields()
 
     # Create the columns before performing calculations
@@ -225,7 +225,7 @@ def process_rings(points_lyr, inner_radius, outer_radius, num_compartments):
 
             # Save values in the previously created columns
             if values_dem:
-                average_partition = round((sum(values_dem) / len(values_dem)) / 2, 1)
+                average_partition = round((sum(values_dem) / len(values_dem)), 1)
                 column_name = f"{inner_radius:.0f}_{outer_radius:.0f}_{num_compartments}.{i+1}"
                 idx = points_lyr.fields().indexFromName(column_name)
 
@@ -239,7 +239,7 @@ def process_rings(points_lyr, inner_radius, outer_radius, num_compartments):
             ring_feature.setGeometry(ring)
             ring_feature.setAttribute("Name", feature["Name"])
             ring_feature.setAttribute("Particion", i + 1)
-            ring_feature.setAttribute("d_Height/2", average_partition if values_dem else None)
+            ring_feature.setAttribute("d_Height", average_partition if values_dem else None)
             ring_feature.setAttribute("n_pixels", num_pixels)
             provider_rings.addFeature(ring_feature)
     
